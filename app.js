@@ -2,6 +2,7 @@ var http = require('http');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var spawn = require('child_process').spawn;
 
 var app = express();
 
@@ -47,6 +48,71 @@ app.get('/javascripts/:js_name', function (req, res, next) {
       next();
     }
   });
+});
+
+app.get('/devices/:type', function (req, res, next) {
+  console.log("sending info page for ", req.params.type);
+
+  var options = {
+    root: path.join(__dirname, "public"+"/devices")
+  };
+
+  res.sendFile(req.params.type+".html", options, function (err) {
+    if (err) {
+      //res.send("hello");
+      req.error = err;
+      next();
+    }
+  });
+});
+
+
+
+app.get('/info/:type',function (req, res, next) {
+  console.log("sending info type", req.params.type);
+  let arguements = null;
+
+  switch (req.params.type) {
+    case "d":
+      console.log("getting disk info");
+      arguements = "-d";
+      break;
+    case "c":
+      console.log("getting temperature info");
+      arguements = "-c";
+      break;
+    case "t":
+      console.log("getting top info");
+      arguements = "-t";
+      break;
+    case "a":
+      console.log("getting all info");
+      arguements = "-a";
+      break
+  }
+
+  if(arguements!== null){
+      var prc = spawn('./info_script.sh',  [arguements]);
+      let output = "";
+  //noinspection JSUnresolvedFunction
+      prc.stdout.setEncoding('utf8');
+      prc.stdout.on('data', function (data) {
+        var str = data.toString()
+
+        var lines = str.split(/(\r?\n)/g).join("");
+        output+=lines;
+      })
+      prc.on('close', function (code) {
+        //console.log(output);
+        return res.json({result:output});
+      });
+
+
+  }else{
+      return res.json({result:"failed to get"});
+  }
+
+
 });
 
 

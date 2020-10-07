@@ -73,3 +73,14 @@ button:hover{
   background-color: limegreen;
 }
 
+code {
+  display: block;
+  white-space: pre-wrap
+}
+
+#results{
+  margin-left: 100px;
+  padding: 50px;
+  color: lawngreen;
+}
+
