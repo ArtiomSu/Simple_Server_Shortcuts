@@ -7,7 +7,6 @@ window.onload=function (){
 
     var telegram_bot_restart_buttom = document.getElementById("refresh_telegram_bot");
     var logs_div = document.getElementById("log_results");
-    var test_logs_button = document.getElementById("test_logs_button");
     var windowsmain_button = document.getElementById("shutdown_windows_laptop");
     var windows_amd_button = document.getElementById("shutdown_windows_bro");
 
@@ -29,14 +28,6 @@ window.onload=function (){
             update_logs("Windows AMD Turned off:"+text);
         });
         update_logs("Windows AMD Turned off");
-    }
-
-
-
-    test_logs_button.onclick = function (){
-        for(var i = 0; i< 10;i++){
-            update_logs("test_logs "+i);
-        }
     }
 };
 

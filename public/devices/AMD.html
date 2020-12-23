@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>Manager</title>
+            <link rel = "stylesheet" type = "text/css" href = "/stylesheets/style.css">
+            <script src="/javascripts/amd.js" ></script>
+        </head>
+<body>
+
+<div id="container">
+    <div id="header">
+        <h1 id="header_name">Windows AMD</h1>
+    </div>
+    <div id="body">
+        <div>
+            <h3>Actions</h3>
+            <button id="up">Test Up</button>
+            <button id="shutdown">Shutdown</button>
+            <button id="restart">Restart</button>   
+        </div>
+        <div>
+            <h3>Custom Error Message</h3>
+            <input id="title_input" type="text" name="title" placeholder="Title">
+            <input id="title_message" type="text" name="message" placeholder="Message">
+            <button id="send_error">Send</button>
+            <div>
+                <h3></h3>
+                <button id="spamerror">Spam Error messages</button>
+            </div>
+        </div>
+        <div>
+            <h3>Mouse Control</h3>
+            <button id="movemouse">Move mouse to corner</button>
+            <button id="mousespaz">Spaz mouse</button>
+        </div>
+        <div>
+            <h3>Keyboard Control</h3>
+            <button id="altfour">Alt F4</button>
+        </div>
+        <div id="results"></div>
+    </div>
+    <div id="footer">
+        <div id="log_results">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

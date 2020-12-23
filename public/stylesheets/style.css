@@ -60,6 +60,18 @@ button {
   transition: background-color 2s, color 3s;
 }
 
+input[type=text] {
+  padding: 2em;
+  margin-right: 10px;
+  border: none;
+  background-color: darkred;
+  color: black;
+}
+
+input[type=text]:focus {
+  border: 0px darkred;
+}
+
 button:hover{
   background-color: black;
   color: #bbbbbb;
