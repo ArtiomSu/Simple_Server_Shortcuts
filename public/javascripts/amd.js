@@ -13,6 +13,25 @@ window.onload=function (){
         });
     };
 
+    var send_text_func = (enter,use_input) =>{
+            var data = new FormData();
+            if(use_input){
+                data.append('text', text_input_send.value);
+            }else{
+                data.append('text', "");
+            }
+            
+            data.append('use_enter', enter);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', server_url+"text", true);
+            xhr.onload = function () {
+                // do something to response
+                update_logs(this.responseText)
+            };
+            xhr.send(data);
+    }
+
     var up = document.getElementById("up");
     var shutdown = document.getElementById("shutdown");
     var restart = document.getElementById("restart");
@@ -25,6 +44,12 @@ window.onload=function (){
     var title_input = document.getElementById("title_input");
     var title_message = document.getElementById("title_message");
     var send_error = document.getElementById("send_error");
+
+    var text_input_send = document.getElementById("text_input_send");
+    var send_text = document.getElementById("send_text");
+    var send_text_enter = document.getElementById("send_text_enter");
+
+    var press_enter = document.getElementById("press_enter");
 
 
 
@@ -53,6 +78,18 @@ window.onload=function (){
     }
     restart.onclick = function (){
         get_info("restart");
+    }
+
+    send_text.onclick = function (){
+        send_text_func(false,true);
+    }
+
+    send_text_enter.onclick = function (){
+        send_text_func(true,true);
+    }
+
+    press_enter.onclick = function () {
+        send_text_func(true,false)
     }
 
     send_error.onclick = function (){
