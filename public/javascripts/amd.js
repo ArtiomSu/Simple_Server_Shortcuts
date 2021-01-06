@@ -52,6 +52,14 @@ window.onload=function (){
     var press_enter = document.getElementById("press_enter");
 
 
+    //speak
+    var speak_text_send = document.getElementById("speak_text_send");
+    var speak_language = document.getElementById("speak_language");
+    var speak_use_slow_button = document.getElementById("speak_use_slow");
+    var send_speak_text = document.getElementById("send_speak_text");
+    var speak_slow_mode = false;
+
+
 
     var logs_div = document.getElementById("results");
     var header = document.getElementById("header_name");
@@ -106,6 +114,34 @@ window.onload=function (){
             };
             xhr.send(data);
         }
+    }
+
+    speak_use_slow_button.onclick = function (){
+        speak_slow_mode = !speak_slow_mode;
+        if(speak_slow_mode){
+            speak_use_slow_button.textContent = "Slow Mode";
+        }else{
+            speak_use_slow_button.textContent = "Normal Mode";
+        }
+    }
+
+    send_speak_text.onclick = function(){
+        if(speak_text_send.value.length >0){
+            var data = new FormData();
+            data.append('text', speak_text_send.value);
+            data.append('language', speak_language.options[speak_language.selectedIndex].value);
+            data.append('slow', speak_slow_mode);
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', server_url+"speak", true);
+            xhr.onload = function () {
+                // do something to response
+                update_logs(this.responseText)
+            };
+            xhr.send(data);
+        }else{
+            update_logs("enter something to say");
+        }
+        
     }
 
 

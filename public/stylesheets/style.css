@@ -60,8 +60,21 @@ button {
   transition: background-color 2s, color 3s;
 }
 
+select {
+  border: none;
+  background-color: darkred;
+  color: black;
+  padding: 2em;
+  margin-right: 10px;
+  transition: background-color 2s, color 3s;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 input[type=text] {
   padding: 2em;
+  width: 20%;
   margin-right: 10px;
   border: none;
   background-color: darkred;
