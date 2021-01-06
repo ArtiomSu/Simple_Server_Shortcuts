@@ -59,6 +59,14 @@ window.onload=function (){
     var send_speak_text = document.getElementById("send_speak_text");
     var speak_slow_mode = false;
 
+    var screenshot = document.getElementById("screenshot");
+    var screenshot_save = document.getElementById("screenshot_save");
+    var img_screenshot = document.getElementById("img_screenshot");
+    var screenshot_hide = document.getElementById("screenshot_hide");
+    var screenshot_img_div = document.getElementById("screenshot_img_div");
+    screenshot_img_div.style.display = 'none';
+    var screenshot_img = null;
+    var screenshot_hidden = false;
 
 
     var logs_div = document.getElementById("results");
@@ -144,6 +152,38 @@ window.onload=function (){
         
     }
 
+    screenshot.onclick = function(){
+        var xhr = new XMLHttpRequest();
+        xhr.responseType = 'arraybuffer';
+        xhr.onload = function() {
+            var blb = new Blob([xhr.response], {type: 'image/png'});
+            var url = (window.URL || window.webkitURL).createObjectURL(blb);
+            img_screenshot.src = url;
+            screenshot_img = url;
+            screenshot_img_div.style.display = 'block';
+            update_logs("got image");
+        }
+        xhr.open('GET', server_url+"/screenshot");
+        xhr.send();
+    }
+
+    screenshot_save.onclick = function(){
+        if(screenshot_img !== null){
+            var win = window.open(screenshot_img, '_blank');
+            win.focus();
+        }
+    }
+
+    screenshot_hide.onclick = function(){
+        screenshot_hidden = !screenshot_hidden;
+        if(screenshot_hidden){
+            screenshot_img_div.style.display = 'none';
+            screenshot_hide.textContent = "Show Screenshot";
+        }else{
+            screenshot_img_div.style.display = 'block';
+            screenshot_hide.textContent = "Hide Screenshot";
+        }
+    }
 
 
     header.onclick = function (){
