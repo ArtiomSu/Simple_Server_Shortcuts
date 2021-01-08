@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>Manager</title>
+            <link rel = "stylesheet" type = "text/css" href = "/stylesheets/style.css">
+            <script src="/javascripts/telegram_bot.js" ></script>
+        </head>
+<body>
+
+<div id="container">
+    <div id="header">
+        <h1 id="header_name">Telegram Bot</h1>
+    </div>
+    <div id="body">
+        <div>
+            <h3>Actions</h3>
+            <button id="refresh_telegram_bot">Refresh Telegram Bot</button>
+        </div>
+        <div>
+            <h3>Send Message As Bot</h3>
+            <input id="message_text" type="text" name="text" placeholder="Text">
+            <select id="channel">
+                <option value="-1001462779940">Terminal Heat Sink Group</option>
+                <option value="-1001456055250">Test Bots</option>
+            </select>
+            <button id="send_message">Send</button>
+        </div>
+        <div id="results"></div>
+    </div>
+    <div id="footer">
+        <div id="log_results">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
