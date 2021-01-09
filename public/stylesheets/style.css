@@ -28,6 +28,9 @@ html {
   padding:5px;
   text-align: center;
 }
+#header_name{
+  color: #af6204;
+}
 #body {
   padding:10px;
   margin-left: 20px;
@@ -54,7 +57,7 @@ h1, h3 {
 button {
   border: none;
   background-color: darkred;
-  color: black;
+  color: #ef741b;
   padding: 2em;
   margin-right: 10px;
   transition: background-color 2s, color 3s;
@@ -63,7 +66,7 @@ button {
 select {
   border: none;
   background-color: darkred;
-  color: black;
+  color: #ef741b;
   padding: 2em;
   margin-right: 10px;
   transition: background-color 2s, color 3s;
@@ -78,7 +81,7 @@ input[type=text] {
   margin-right: 10px;
   border: none;
   background-color: darkred;
-  color: black;
+  color: #ef741b;
 }
 
 input[type=text]:focus {
@@ -86,21 +89,49 @@ input[type=text]:focus {
 }
 
 button:hover{
-  background-color: black;
-  color: #bbbbbb;
+  background-color: #ef741b;
+  color: darkred;
 }
 
 .links{
   background-color: royalblue;
+  color: #1a3557;
 }
 
 .device{
   background-color: limegreen;
+  color: #686f36;
 }
 
 code {
   display: block;
   white-space: pre-wrap
+}
+
+.keyboard_layout{
+  color: #e3820b;
+  width: 3440px;
+}
+
+.leader_sequences{
+  color: #e3820b;
+  font-weight: bold;
+}
+
+p{
+  color: limegreen;
+}
+
+.wikitable {
+  color: #e3820b;
+  font-size: 28px;
+  text-align:center;
+  border-collapse: collapse;
+}
+
+.wikitable td{
+  border: 1px solid green;
+  width: 70px;
 }
 
 #results{

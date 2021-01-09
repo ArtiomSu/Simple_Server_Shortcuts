@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>Manager</title>
+            <link rel = "stylesheet" type = "text/css" href = "/stylesheets/style.css">
+            <script src="/javascripts/keyboard.js" ></script>
+        </head>
+<body>
+
+<div id="container">
+    <div id="header">
+        <h1 id="header_name">Keyboard</h1>
+    </div>
+    <div id="body">
+        <div>
+            <h3>Links</h3>
+            <button class="links" id="link_qbit" onclick="window.open('https://docs.qmk.fm/#/feature_rgb_matrix', '_blank');">rgb_matrix</button>
+            <button class="links" id="link_youtube" onclick="window.open('https://docs.qmk.fm/#/keycodes', '_blank');">keycodes</button>
+            <button class="links" id="link_github" onclick="window.open('https://github.com/ArtiomSu/qmk_firmware/blob/artiom/keyboards/ergodox_ez/keymaps/artiom_no_mouse/keymap.c', '_blank');">keymap</button>
+            <button class="links" id="link_google_console" onclick="window.open('https://configure.ergodox-ez.com/ergodox-ez/search?q=artiom&legacy=false', '_blank');">ErgoDox Configurator</button>
+
+        </div>
+
+        <div>
+            <h3>Macros Layer</h3>
+            <div class="keyboard_layout">
+                <code>
+______,             ______,         ______,             DYN_REC_START1, DYN_REC_START2, DYN_REC_STOP,   ______,                    ______,         ______,         ______,         ______,         ______,         ______,         RESET,
+______,             ST_M_vim_q,     ST_M_vim_w,         ______,         LCTL(KC_V),     LCTL(KC_B),     ______,                    ______,         ______,         ______,         ______,         ______,         ______,         ST_M_enable_bunny_hop,
+______,             ST_M_round_b,   ST_M_angle_b,       ST_M_square_b,  ST_M_vim_sp,    ST_M_vim_vs,                               LCTL(KC_H),     LCTL(KC_J),     LCTL(KC_K),     LCTL(KC_L),     ______,         ______,
+______,             ST_M_all_b,     ______,             ______,         ST_M_vim_sp_e,  ST_M_vim_vs_e,  ______,                    ______,         ______,         ______,         ST_M_double_left_angle,         ST_M_double_right_angle,         ______,         ______,
+______,             ______,         ______,             ______,         ______,                                                                    ______,         ______,         ______,         ______,         ______,
+
+                                                                                                ______, ______,                    ______, ______,
+                                                                                                        ______,                    ______,
+                                                    KC_SPACE,       LALT(KC_ENTER),                     ______,                    ST_M_double_colon,              ______, ______
+                </code>
+            </div>
+        </div>
+
+        <div>
+            <h3>Games Layer</h3>
+            <div class="keyboard_layout">
+                <code>
+KC_0,               KC_1,           KC_2,               KC_3,           KC_4,           KC_5,           KC_6,                      KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,         KC_F12,         KC_HOME,
+KC_ESCAPE,          KC_8,           KC_Q,               KC_W,           KC_E,           KC_R,           KC_7,                      KC_F6,          KC_KP_ASTERISK, KC_KP_7,        KC_KP_8,        KC_KP_9,        KC_KP_MINUS,    KC_END,
+KC_TAB,             KC_9,           KC_A,               KC_S,           KC_D,           KC_F,                                                      KC_KP_SLASH,    KC_KP_4,        KC_KP_5,        KC_KP_6,        KC_KP_PLUS,     KC_DELETE,
+KC_LSHIFT,          KC_LSHIFT,      KC_X,               KC_C,           KC_V,           KC_G,           KC_ENTER,                  KC_F5,          KC_KP_ENTER,    KC_KP_1,        KC_KP_2,        KC_KP_3,        KC_UP,          TO(0),
+KC_LCTRL,           KC_Z,           KC_I,               KC_C,           KC_B,                                                                                      KC_KP_0,        KC_KP_DOT,      KC_LEFT,        KC_DOWN,        KC_RIGHT,
+                                                                                                      KC_Y, KC_U,                  KC_F3, KC_F4,
+                                                                                                            KC_O,                  KC_F2,
+                                                ST_M_bunny_hop,       KC_LCTRL,                             KC_M,                  KC_F1,          KC_NUMLOCK,     KC_INSERT
+                </code>
+            </div>
+        </div>
+
+        <div>
+            <h3>Leader Sequences</h3>
+            <p><span class="leader_sequences">t </span>{spawn terminal} "timer "</p>
+            <p><span class="leader_sequences">b i </span>"https://www.bing.com/images/search?q="</p>
+            <p><span class="leader_sequences">h a </span>"hahahahahahahahahahaha"</p>
+            <p><span class="leader_sequences">c </span>"code ."{press enter}</p>
+            <p><span class="leader_sequences">right_arrow </span>{wake leds}</p>
+            <p><span class="leader_sequences">right_arrow right_arrow </span>{toggle leds}</p>
+            <p><span class="leader_sequences">right_arrow right_arrow right_arrow </span>{wake leds and turn on}</p>
+        </div>
+
+        <div>
+            <h3>Compile</h3>
+            <code class="keyboard_layout">cd /media/veracrypt1/GIT/qmk_firmware && make clean && make ergodox_ez:artiom_no_mouse</code>
+        </div>
+
+        <div>
+            <h3>KC_RALT (ALT GR)</h3>
+
+            <table class="wikitable">
+
+                <tbody><tr>
+                    <td>¬ <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">◌</span><br><span style="color: red; --darkreader-inline-color:#ff1515;" data-darkreader-inline-color="">◌</span> <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">¦</span></td>
+                    <td>! <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">¡</span><br>1 <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">¹</span></td>
+                    <td>" <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">½</span><br>2 <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">◌</span></td>
+                    <td>£ <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">⅓</span><br>3 <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">³</span></td>
+                    <td>$ <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">¼</span><br>4 <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">€</span></td>
+                    <td>% <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">⅜</span><br>5 <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">½</span></td>
+                    <td>^ <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">⅝</span><br>6 <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">◌</span></td>
+                    <td>&amp; <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">⅞</span><br>7 <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">{</span></td>
+                    <td>* <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">™</span><br>8 <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">[</span></td>
+                    <td>( <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">±</span><br>9 <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">]</span></td>
+                    <td>) <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">°</span><br>0 <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color=""></span>}</td>
+                    <td>_ <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">¿</span><br>- <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">\</span></td>
+                    <td>+ <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">◌</span><br>= <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">◌</span>
+                    </td></tr>
+                <tr>
+                    <td>tab</td>
+                    <td>Q <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">Ω</span><br>q <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">@</span></td>
+                    <td>W <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">Ẃ</span><br>w <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">ẃ</span></td>
+                    <td>E <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">É</span><br>e <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">é</span></td>
+                    <td>R <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">®</span><br>r <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">¶</span></td>
+                    <td>T <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">Ŧ</span><br>t <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">ŧ</span></td>
+                    <td>Y <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">Ý</span><br>y <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">ý</span></td>
+                    <td>U <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">Ú</span><br>u <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">ú</span></td>
+                    <td>I <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">Í</span><br>i <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">í</span></td>
+                    <td>O <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">Ó</span><br>o <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">ó</span></td>
+                    <td>P <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">Þ</span><br>p <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">þ</span></td>
+                    <td>{ <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">◌</span><br>[ <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">◌</span></td>
+                    <td>} <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">◌</span><br>] <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">◌</span>
+                    </td></tr>
+                <tr>
+                    <td></td>
+                    <td>A <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">Á</span><br>a <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">á</span></td>
+                    <td>S <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">§</span><br>s <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">ß</span></td>
+                    <td>D <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">Ð</span><br>d <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">ð</span></td>
+                    <td>F <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">ª</span><br>f <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">đ</span></td>
+                    <td>G <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">Ŋ</span><br>g <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">ŋ</span></td>
+                    <td>H <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">Ħ</span><br>h <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">ħ</span></td>
+                    <td>J <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">◌</span><br>j <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">◌</span></td>
+                    <td>K <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">&amp;</span><br>k <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">ĸ</span></td>
+                    <td>L <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">Ł</span><br>l <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">ł</span></td>
+                    <td>: <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">◌</span><br>; <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">◌</span></td>
+                    <td>@ <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">◌</span><br>' <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">◌</span></td>
+                    <td>~ <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">◌</span><br># <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">◌</span>
+                    </td></tr>
+                <tr>
+                    <td>shift</td>
+                    <td>| <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">¦</span><br>\ <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">|</span></td>
+                    <td>Z <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">&lt;</span><br>z <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">«</span></td>
+                    <td>X <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">&gt;</span><br>x <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">»</span></td>
+                    <td>C <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">Ç</span><br>c <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">ç</span></td>
+                    <td>V <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">‘</span><br>v <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">“</span></td>
+                    <td>B <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">’</span><br>b <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">”</span></td>
+                    <td>N <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">N</span><br>n <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">n</span></td>
+                    <td>M <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">º</span><br>m <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">µ</span></td>
+                    <td>&lt; <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">×</span><br>, <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">─</span></td>
+                    <td>&gt; <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">÷</span><br>. <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">·</span></td>
+                    <td>? <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">◌</span><br>/ <span style="color: green; --darkreader-inline-color:#71ff71;" data-darkreader-inline-color="">◌</span></td>
+                    <td>
+                    </td></tr></tbody></table>
+
+
+
+
+
+
+
+        </div>
+
+        <div id="results"></div>
+    </div>
+    <div id="footer">
+        <div id="log_results">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

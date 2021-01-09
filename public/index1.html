@@ -11,11 +11,11 @@
 
 <div id="container">
     <div id="header">
-        <h1>Manager</h1>
+        <h1 id="header_name">Manager</h1>
     </div>
     <div id="body">
         <div>
-            <h3>Actions</h3>
+            <h3>Quick Actions</h3>
             <button id="refresh_telegram_bot">Refresh Telegram Bot</button>
             <button id="shutdown_windows_laptop">Shutdown Windows Main</button>
             <button id="shutdown_windows_bro">Shutdown Windows AMD</button>
@@ -33,7 +33,12 @@
             <button class="device" id="device_switch" onclick="window.open('http://10.0.0.10', '_blank');">Switch</button>
             <button class="device" id="device_nas" onclick="window.location.href='devices/nas'">Nas info</button>
             <button class="device" id="device_amd" onclick="window.location.href='devices/amd'">Windows AMD</button>
+            <button class="device" id="pie_ambient" onclick="window.open('http://10.0.0.11:8080/', '_blank');">Pie Ambient</button>
+        </div>
+        <div>
+            <h3>Other Things</h3>
             <button class="device" id="telegram" onclick="window.location.href='devices/telegram_bot'">Telegram Bot</button>
+            <button class="device" id="keyboard" onclick="window.location.href='devices/keyboard'">Keyboard</button>
         </div>
 
     </div>

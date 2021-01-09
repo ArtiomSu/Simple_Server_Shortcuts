@@ -50,6 +50,21 @@ app.get('/javascripts/:js_name', function (req, res, next) {
   });
 });
 
+app.get('/images/:image_name', function (req, res, next) {
+  console.log("sending image", req.params.image_name);
+
+  var options = {
+    root: path.join(__dirname, "public"+"/images")
+  };
+
+  res.sendFile(req.params.js_name, options, function (err) {
+    if (err) {
+      req.error = err;
+      next();
+    }
+  });
+});
+
 app.get('/devices/:type', function (req, res, next) {
   console.log("sending info page for ", req.params.type);
 
