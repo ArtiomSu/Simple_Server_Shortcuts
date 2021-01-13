@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>Manager</title>
+            <link rel = "stylesheet" type = "text/css" href = "/stylesheets/style.css">
+            <script src="/javascripts/mouse.js" ></script>
+        </head>
+<body>
+
+<div id="container">
+    <div id="header">
+        <h1 id="header_name">Clicks Per Second</h1>
+    </div>
+    <div id="body">
+        <div>
+            <h3>Mouse</h3>
+            <div class="threecolumn">
+                <div class="threecolumnchild">
+                    <h3 class="goldenh">Left Clicks</h3>
+                    <h3 class="goldenh" id="left_clicks">0</h3>
+                </div>
+                <div class="threecolumnchild">
+                    <h3 class="goldenh">Right Clicks</h3>
+                    <h3 id="right_clicks" class="goldenh">0</h3>
+                </div>
+                <div class="threecolumnchild">
+                    <h3 class="goldenh">Middle Clicks</h3>
+                    <h3 id="middle_clicks" class="goldenh">0</h3>
+                </div>
+            </div>
+
+            <div class="threecolumn">
+                <div class="threecolumnchild">
+                    <h3 id="left_clicks_cps" class="goldenh">0 Clicks Per Second</h3>
+                </div>
+                <div class="threecolumnchild">
+                    <h3 id="right_clicks_cps" class="goldenh">0 Clicks Per Second</h3>
+                </div>
+                <div class="threecolumnchild">
+                    <h3 id="middle_clicks_cps" class="goldenh">0 Clicks Per Second</h3>
+                </div>
+            </div>
+
+        </div>
+
+        <div>
+            <h3>Keys</h3>
+            <div class="threecolumn">
+                <div class="threecolumnchild" style="width: 100%;">
+                <h3 class="goldenh">Keyboard Keys Clicks</h3>
+                <h3 id="key_clicks" class="goldenh">0</h3>
+                <h3 id="key_clicks_cps" class="goldenh">0 Keys Per Second</h3>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="threecolumn" style="display: flex;">
+            <button onclick="window.location.reload();">Refresh</button>
+        </div>
+
+        <div id="results"></div>
+    </div>
+    <div id="footer">
+        <div id="log_results">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

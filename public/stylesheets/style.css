@@ -140,3 +140,19 @@ p{
   color: lawngreen;
 }
 
+.threecolumn{
+  width: 100%;
+  float: left;
+  align-items: center;
+  justify-content: center;
+
+}
+.threecolumnchild{
+  width: 33%;
+  float: left;
+  text-align: center;
+}
+
+.goldenh{
+  color: #e3820b;
+}
