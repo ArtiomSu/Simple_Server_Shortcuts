@@ -12,7 +12,8 @@ window.onload=function (){
         if(last_gotten === null){
             last_gotten = "t";
         }
-        httpGetAsync("/info/"+last_gotten,(text)=>{
+        let token = getCookie("token");
+        httpGetAsyncTokenised("/info/"+last_gotten,token,(text)=>{
             update_logs(JSON.parse(text).result);
             if(loop_duration !== 0){
                 setTimeout(get_info,loop_duration*1000);
@@ -90,5 +91,17 @@ function httpGetAsync(theUrl, callback)
             callback(xmlHttp.responseText);
     }
     xmlHttp.open("GET", theUrl, true); // true for asynchronous
+    xmlHttp.send(null);
+}
+
+function httpGetAsyncTokenised(theUrl,token,callback)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() {
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+    }
+    xmlHttp.open("Get", theUrl, true); // true for asynchronous
+    xmlHttp.setRequestHeader("authorization", "Bearer "+ token);
     xmlHttp.send(null);
 }

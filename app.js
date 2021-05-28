@@ -3,9 +3,21 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var spawn = require('child_process').spawn;
+const jwt = require('jsonwebtoken');
+const TOKEN_SECRET = require('crypto').randomBytes(64).toString('hex');
+const dotenv = require('dotenv');
+const crypto = require("crypto");
+var bcrypt = require('bcryptjs');
+
+
+dotenv.config();
+const USER_NAME = process.env.USER_NAME;
+const USER_ID = process.env.USER_ID;
+const USER_PASSWORD = process.env.USER_PASSWORD;
+var token_random_time = crypto.randomInt(0, 100000000);
+var token_salt_ramdon = bcrypt.genSaltSync(10);
 
 var app = express();
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -13,9 +25,54 @@ app.use(cookieParser());
 //app.use(express.static(path.join(__dirname, 'public')));
 var publicDir = path.join(__dirname, 'public');
 
+
+function generateAccessToken(username) {
+  return jwt.sign(username, TOKEN_SECRET, { expiresIn: '1800s' }); //30 mins
+}
+
+function authenticateToken(req, res, next) {
+  const authHeader = req.headers['authorization'];
+  let token = authHeader && authHeader.split(' ')[1];
+  if(token){
+    token = authHeader.split(' ')[1].replace(/[\""]/g, '');
+  }
+  token_random_time = crypto.randomInt(0, 100000000);
+  token_salt_ramdon = bcrypt.genSaltSync(10);
+
+  if (token == null){
+    res.setHeader("token_salt", token_salt_ramdon);
+    res.setHeader("token_rand", token_random_time);
+    res.statusCode=403;
+    return res.sendFile(path.join(publicDir, 'login.html'));
+  }
+
+  jwt.verify(token, TOKEN_SECRET, (err, user) => {
+    if (err){
+      console.log(err);
+      res.statusCode=403;
+      res.setHeader("token_salt", token_salt_ramdon);
+      res.setHeader("token_rand", token_random_time);
+      return res.sendFile(path.join(publicDir, 'login.html'));
+    }
+    req.user = user;
+    next();
+  });
+}
+
 app.get('/', function (req, res) {
   console.log("sending index");
   res.sendFile(path.join(publicDir, 'index1.html'));
+});
+
+app.post('/login', (req, res) =>{
+  let token = "error";
+  if(req.body.username && req.body.hash){
+    let hash =  bcrypt.hashSync(USER_ID+USER_PASSWORD+token_random_time.toString(),token_salt_ramdon);
+    if(req.body.username === USER_NAME && req.body.hash === hash){
+      token = generateAccessToken({username: req.body.username});
+    }
+  }
+  res.json(token);
 });
 
 app.get('/stylesheets/:sheet_name', function (req, res, next) {
@@ -65,7 +122,7 @@ app.get('/images/:image_name', function (req, res, next) {
   });
 });
 
-app.get('/devices/:type', function (req, res, next) {
+app.get('/devices/:type', authenticateToken, function (req, res, next) {
   console.log("sending info page for ", req.params.type);
 
   var options = {
@@ -83,7 +140,7 @@ app.get('/devices/:type', function (req, res, next) {
 
 
 
-app.get('/info/:type',function (req, res, next) {
+app.get('/info/:type', authenticateToken, function (req, res, next) {
   console.log("sending info type", req.params.type);
   let arguements = null;
 

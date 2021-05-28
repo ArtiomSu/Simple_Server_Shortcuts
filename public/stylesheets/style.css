@@ -88,6 +88,19 @@ input[type=text]:focus {
   border: 0px darkred;
 }
 
+input[type=password] {
+  padding: 2em;
+  width: 20%;
+  margin-right: 10px;
+  border: none;
+  background-color: #262626;
+  color: #ef741b;
+}
+
+input[type=password]:focus {
+  border: 0px #111111;
+}
+
 button:hover{
   background-color: #ef741b;
   color: darkred;

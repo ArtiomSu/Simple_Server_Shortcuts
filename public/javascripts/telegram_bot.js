@@ -48,7 +48,6 @@ window.onload=function (){
 
 };
 
-
 function httpGetAsync(theUrl, callback)
 {
     var xmlHttp = new XMLHttpRequest();
