@@ -8,6 +8,7 @@ const TOKEN_SECRET = require('crypto').randomBytes(64).toString('hex');
 const dotenv = require('dotenv');
 const crypto = require("crypto");
 var bcrypt = require('bcryptjs');
+const fs = require('fs');
 
 
 dotenv.config();
@@ -16,12 +17,45 @@ const USER_ID = process.env.USER_ID;
 const USER_PASSWORD = process.env.USER_PASSWORD;
 var token_random_time = crypto.randomInt(0, 100000000);
 var token_salt_ramdon = bcrypt.genSaltSync(10);
+var seasons = [];
+
+function readSeasons(req, res){
+  try {
+    const file = fs.readFileSync('seasons.json');
+    seasons = JSON.parse(file.toString());
+    res.json(seasons);
+  } catch (error) {
+    console.log("failed to read seasons");
+    console.error(error);
+    res.statusCode=500;
+    res.json({status: "failed"});
+  }
+}
+
+function writeSeasons(req, res){
+  try {
+    fs.writeFileSync('seasons.json', JSON.stringify(seasons));
+    res.json({status: "success"});
+  } catch (error) {
+    console.log("failed to save seasons");
+    console.error(error);
+    res.statusCode=500;
+    res.json({status: "failed"});
+  }
+}
 
 var app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+app.use((req, res, next) => {
+    res.append('Access-Control-Allow-Origin', ['*']);
+    res.append('Access-Control-Allow-Methods', 'OPTIONS,GET,PUT,POST,DELETE');
+    res.append('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
 //app.use(express.static(path.join(__dirname, 'public')));
 var publicDir = path.join(__dirname, 'public');
 
@@ -186,6 +220,19 @@ app.get('/info/:type', authenticateToken, function (req, res, next) {
 
 
 });
+
+app.get('/seasons', function(req, res, next) {
+  readSeasons(req, res);
+});
+
+app.post('/seasons', function(req, res, next) {
+  seasons = req.body;
+  writeSeasons(req, res);
+});
+
+app.options('/seasons', function(req, res, next) {
+  res.send();
+})
 
 
 app.use(function(req, res) {
