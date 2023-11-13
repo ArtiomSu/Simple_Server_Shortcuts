@@ -2,7 +2,7 @@
 temps(){
 echo "CPU $(lscpu | grep "CPU MHz:" | sed "s/[ \t]*//g" | sed "s/CPUMHz://g") Mhz "
 echo ""
-for i in /dev/sd[a-z]; do /home/nas/Simple_Server_Shortcuts/hdd_temperature "${i: -1}"; done
+for i in /dev/sd[a-z]; do ./hdd_temperature "${i: -1}"; done
 echo ""
 sensors
 #    echo "CPU $(lscpu | grep "CPU MHz:" | sed "s/[ \t]*//g" | sed "s/CPUMHz://g") Mhz "

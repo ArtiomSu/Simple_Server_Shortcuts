@@ -21,6 +21,13 @@ window.onload=function (){
         });
     };
 
+    var set_system = (type) =>{
+        let token = getCookie("token");
+        httpGetAsyncTokenised("/system/"+type,token,(text)=>{
+            update_logs(JSON.parse(text).result);
+        });
+    };
+
     var get_top = document.getElementById("get_top");
     var get_disk = document.getElementById("get_disk");
     var get_temp = document.getElementById("get_temp");
@@ -31,6 +38,19 @@ window.onload=function (){
 
     var loop_one = document.getElementById("loop_one");
     var loop_five = document.getElementById("loop_five");
+
+    var sys_v_status = document.getElementById("sys_v_status");
+    var sys_v_up = document.getElementById("sys_v_up");
+    var sys_v_down = document.getElementById("sys_v_down");
+    var sys_ip = document.getElementById("sys_ip");
+    var sys_ip_public = document.getElementById("sys_ip_public");
+
+
+    var sys_shut = document.getElementById("sys_shut");
+    var sys_smb_status = document.getElementById("sys_smb_status");
+    var sys_smb = document.getElementById("sys_smb");
+    var sys_nfs_status = document.getElementById("sys_nfs_status");
+    var sys_nfs = document.getElementById("sys_nfs");
 
     var loop_duration = 0;
     var last_gotten = null;
@@ -48,6 +68,36 @@ window.onload=function (){
     }
     get_all.onclick = function (){
         get_info("a");
+    }
+    sys_v_status.onclick = function (){
+        set_system("v_status");
+    }
+    sys_v_up.onclick = function (){
+        set_system("v_connect");
+    }
+    sys_v_down.onclick = function (){
+        set_system("v_disconnect");
+    }
+    sys_ip.onclick = function (){
+        set_system("ip");
+    }
+    sys_ip_public.onclick = function (){
+        set_system("ip_public");
+    }
+    sys_shut.onclick = function (){
+        set_system("shut");
+    }
+    sys_smb_status.onclick = function (){
+        set_system("smb_status");
+    }
+    sys_smb.onclick = function (){
+        set_system("smb");
+    }
+    sys_nfs_status.onclick = function (){
+        set_system("nfs_status");
+    }
+    sys_nfs.onclick = function (){
+        set_system("nfs");
     }
 
     header.onclick = function (){

@@ -221,6 +221,92 @@ app.get('/info/:type', authenticateToken, function (req, res, next) {
 
 });
 
+app.get('/system/:command', authenticateToken, function (req, res, next) {
+  console.log("sending systemc command", req.params.command);
+  let arguements = null;
+
+  let p = null;
+  const p_actions = './sys_actions';
+
+  switch (req.params.command) {
+    case "v_status":
+      console.log("getting vpn info");
+      p = "mullvad";
+      arguements = "status";
+      break;
+    case "v_disconnect":
+      console.log("disconnecting vpn");
+      p = "mullvad";
+      arguements = "disconnect";
+      break;
+    case "v_connect":
+      console.log("connecting vpn");
+      p = "mullvad";
+      arguements = "connect";
+      break;
+    case "ip":
+      console.log("getting ip info");
+      p = "ip";
+      arguements = "a";
+      break
+    case "ip_public":
+      console.log("getting ip public info");
+      p = "curl";
+      arguements = "https://ifconfig.me";
+      break
+    case "shut":
+      console.log("shutting down");
+      p = p_actions;
+      arguements = "shut";
+      break
+    case "smb_status":
+      console.log("getting smb status");
+      p = p_actions;
+      arguements = "smb_status";
+      break
+    case "smb":
+      console.log("restarting smb");
+      p = p_actions;
+      arguements = "smb_restart";
+      break
+    case "nfs_status":
+      console.log("getting nfs status");
+      p = p_actions;
+      arguements = "nfs_status";
+      break
+    case "nfs":
+      console.log("restarting nfs");
+      p = p_actions;
+      arguements = "nfs_restart";
+      break
+    default:
+      return res.json({result: "invalid command"});
+  }
+
+  if(arguements!== null){
+      var prc = spawn(p,  [arguements]);
+      let output = "";
+  //noinspection JSUnresolvedFunction
+      prc.stdout.setEncoding('utf8');
+      prc.stdout.on('data', function (data) {
+        var str = data.toString()
+
+        var lines = str.split(/(\r?\n)/g).join("");
+        output+=lines;
+      })
+      prc.on('close', function (code) {
+        //console.log(output);
+        return res.json({result:output});
+      });
+
+
+  }else{
+      return res.json({result:"failed to get"});
+  }
+
+
+});
+
 app.get('/seasons', function(req, res, next) {
   readSeasons(req, res);
 });
